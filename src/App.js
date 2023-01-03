@@ -6,7 +6,7 @@ import LandingPage from "./screens/LandingPage/LandingPage";
 import MyNotes from "./screens/MyNotes/MyNotes";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
-import PublicNote from "../../frontend/src/screens/MyNotes/PublicNote";
+import PublicNote from "./screens/MyNotes/PublicNote"
 import CreateNote from "./screens/CreateNote/CreateNote";
 import CreatePublicNote from "./screens/CreateNote/CreatePublicNote";
 import ShowOwnPublic from "./screens/MyNotes/ShowOwnPublic";
