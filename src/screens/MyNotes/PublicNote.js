@@ -37,7 +37,7 @@ const PublicNote = () => {
 
   return (
     <div style={{ position: "relative", top: "100px" }}>
-      {Object.values(notes)?.reverse().map((note) => (
+      {notes?.map((note) => (
         <MDBCard
           className="mb-3"
           key={note._id}
