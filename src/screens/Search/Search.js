@@ -12,7 +12,7 @@ const Search = () => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    fetch(`/api/users/userlist`, {
+    fetch(`https://feelfreetopost-api.onrender.com/api/users/userlist`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
