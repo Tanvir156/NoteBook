@@ -16,7 +16,7 @@ const NoteForSpecificUser = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   useEffect(() => {
-    fetch(`/api/publicnotes/getnotes/own/profile/posts/${userid}`, {
+    fetch(`https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes/own/profile/posts/${userid}`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
