@@ -33,7 +33,7 @@ export const listPublicNotes = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/publicnotes/getnotes`, config);
+    const { data } = await axios.get(`https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes`, config);
 
     dispatch({
       type: PUBLIC_NOTES_LIST_SUCCESS,
@@ -103,7 +103,7 @@ export const createPublicNoteAction =
       };
 
       const { data } = await axios.post(
-        `/api/publicnotes`,
+        `https://feelfreetopost-api.onrender.com/api/publicnotes`,
         { name, userr, caption, pic, shortImage },
         config
       );
