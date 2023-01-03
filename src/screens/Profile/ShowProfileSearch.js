@@ -7,13 +7,25 @@ import { useParams } from "react-router-dom";
 import Loading from "./../../components/Loading";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { ChatState } from "./../../Context/ChatProvider";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const ShowProfileSearch = () => {
   const { userid } = useParams();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const [loadingChat, setLoadingChat] = useState(false);
   const [profile, setProfile] = useState(null);
+  const histry = useNavigate();
+  const {
+    setSelectedChat,
+    user,
+    notification,
+    setNotification,
+    chats,
+    setChats,
+  } = ChatState();
   useEffect(() => {
     fetch(`https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes/own/profile/search/${userid}`, {
       headers: {
@@ -25,6 +37,26 @@ const ShowProfileSearch = () => {
         setProfile(result);
       }, []);
   });
+
+  const accessChat = async (userId) => {
+    try {
+      setLoadingChat(true);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+      const { data } = await axios.post(`https://feelfreetopost-api.onrender.com/api/chat`, { userId }, config);
+
+      if (chats?.find((c) => c._id === data._id)) setChats([data, ...chats]);
+      setSelectedChat(data);
+      setLoadingChat(false);
+      histry("/chat");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div style={{ position: "relative", top: "60px" }}>
@@ -90,6 +122,9 @@ const ShowProfileSearch = () => {
               </div>
             </div>
           </div>
+          <Button user={user} onClick={() => accessChat(profile._id)}>
+            Message
+          </Button>
           <Link
             to={"/specificuserpost/" + userid}
             style={{ textDecoration: "none" }}
