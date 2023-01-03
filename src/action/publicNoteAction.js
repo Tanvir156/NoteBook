@@ -66,7 +66,7 @@ export const listPublicNotesOwn = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/publicnotes/getnotes/own`, config);
+    const { data } = await axios.get(`https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes/own`, config);
 
     dispatch({
       type: PUBLIC_NOTES_LIST_SUCCESS,
@@ -141,7 +141,7 @@ export const deletePublicNoteAction = (id) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      `/api/publicnotes/getnotes/own/${id}`,
+      `https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes/own/${id}`,
       config
     );
 
@@ -178,7 +178,7 @@ export const navigateProfile = (id) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `/api/publicnotes/getnotes/own/profile/${id}`,
+      `https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes/own/profile/${id}`,
       config
     );
 
