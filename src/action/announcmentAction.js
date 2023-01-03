@@ -33,7 +33,7 @@ export const AnnouncmentListAction = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/announcement/get`, config);
+    const { data } = await axios.get(`https://feelfreetopost-api.onrender.com/api/announcement/get`, config);
 
     dispatch({
       type: ANNOUNCMENT_LIST_SUCCESS,
@@ -71,7 +71,7 @@ export const createAnnouncmentAction =
       };
 
       const { data } = await axios.post(
-        `/api/announcement/create`,
+        `https://feelfreetopost-api.onrender.com/api/announcement/create`,
         { name, session, course, date, stime, etime, message, corx },
         config
       );
@@ -108,7 +108,7 @@ export const AnnouncmentListActionOwn = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/announcement/get/own`, config);
+    const { data } = await axios.get(`https://feelfreetopost-api.onrender.com/api/announcement/get/own`, config);
 
     dispatch({
       type: ANNOUNCMENT_LIST_SUCCESS_OWN,
