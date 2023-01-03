@@ -9,7 +9,7 @@ const UserProfile = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   useEffect(() => {
-    fetch(`/api/users/userprofile`, {
+    fetch(`https://feelfreetopost-api.onrender.com/api/users/userprofile`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
