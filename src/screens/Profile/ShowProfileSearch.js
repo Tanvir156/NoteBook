@@ -15,7 +15,7 @@ const ShowProfileSearch = () => {
   const { userInfo } = userLogin;
   const [profile, setProfile] = useState(null);
   useEffect(() => {
-    fetch(`/api/publicnotes/getnotes/own/profile/search/${userid}`, {
+    fetch(`https://feelfreetopost-api.onrender.com/api/publicnotes/getnotes/own/profile/search/${userid}`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
