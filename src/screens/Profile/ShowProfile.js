@@ -122,15 +122,16 @@ const ShowProfile = () => {
               </div>
             </div>
           </div>
+          <Button user={user} onClick={() => accessChat(profile._id)}>
+            Message
+          </Button>
           <Link
             to={"/specificuserpost/" + userid}
             style={{ textDecoration: "none" }}
           >
             Posts
           </Link>
-          <Button user={user} onClick={() => accessChat(profile._id)}>
-            Message
-          </Button>
+          
           {loadingChat && <Spinner ml="auto" d="flex" />}
         </>
       ) : (
