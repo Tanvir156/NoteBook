@@ -1,0 +1,95 @@
+.mmain-container {
+  padding: 10x;
+}
+
+/* HEADING */
+
+.hheading {
+  text-align: center;
+}
+
+.hheading__credits {
+  margin: 10px 0px;
+  color: #888888;
+  font-size: 10px;
+  transition: all 0.5s;
+}
+
+.hheading__link {
+  text-decoration: none;
+}
+
+.hheading__credits .hheading__link {
+  color: inherit;
+}
+
+/* CARDS */
+
+.ccards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ccard {
+  margin: 10px;
+  padding: 10px;
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+}
+
+.ccard:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+.ccard__link:hover::after {
+  width: 100%;
+}
+
+.ccard__exit {
+  grid-row: 1/2;
+  font-size: 30px;
+  color: rgb(8, 8, 8);
+}
+
+.ccard__title {
+  grid-row: 3/4;
+  font: size 15px;
+  color: #ffffff;
+}
+
+.ccard__apply {
+  grid-row: 4/5;
+  align-self: center;
+}
+
+/* CARD BACKGROUNDS */
+
+.card-2 {
+  background: radial-gradient(#fbc1cc, #fa99b2);
+}
+
+.ccard-1 {
+  background: radial-gradient(#76b2fe, #b69efe);
+  font-weight: "600";
+  font-family: "arial";
+}
+
+.card-4 {
+  background: radial-gradient(#60efbc, #58d5c9);
+}
+
+.card-5 {
+  background: radial-gradient(#f588d8, #c0a3e5);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1600px) {
+  .ccards {
+    justify-content: center;
+  }
+}
