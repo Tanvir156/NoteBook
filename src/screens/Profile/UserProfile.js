@@ -61,7 +61,7 @@ const UserProfile = () => {
           <div className="profile-info col-md-9">
             <div className="panel">
               <div className="bio-graph-heading">
-               How was your day?Leave a message for me!
+               Keep your Profile updated!
               </div>
               <div className="panel-body bio-graph-info">
                 <h1>Info</h1>
