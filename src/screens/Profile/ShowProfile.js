@@ -80,8 +80,7 @@ const ShowProfile = () => {
               <div className="profile-info col-md-9">
                 <div className="panel">
                   <div className="bio-graph-heading">
-                    Aliquam ac magna metus. Nam sed arcu non tellus fringilla
-                    fringilla ut vel ispum. Aliquam ac magna metus.
+                   keep your Profile updated!!
                   </div>
                   <div className="panel-body bio-graph-info">
                     <h1>Info</h1>
