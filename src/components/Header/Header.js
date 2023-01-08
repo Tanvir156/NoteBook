@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../action/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import LandingPage from "../../screens/LandingPage/LandingPage";
 function CollapsibleExample() {
   const his = useNavigate();
 
@@ -54,7 +55,7 @@ function CollapsibleExample() {
             </NavDropdown>
           </>
         ) : (
-          <Nav.Link href="/login">Login</Nav.Link>
+          <LandingPage />
         )}
       </Container>
     </Navbar>
