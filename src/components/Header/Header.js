@@ -55,7 +55,7 @@ function CollapsibleExample() {
             </NavDropdown>
           </>
         ) : (
-          <LandingPage />
+          <Link to='/account'>login/signup</Link>
         )}
       </Container>
     </Navbar>
