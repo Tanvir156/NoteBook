@@ -288,7 +288,7 @@ const sendssage = async () => {
                 value={newMessage}
                 onChange={typingHandler}
               />
-            <button onClick="{sendssage}">Send</button>
+            
             </FormControl>
           </Box>
         </>
