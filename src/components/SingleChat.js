@@ -104,7 +104,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
 
-const sendssage = async (event) => {
+const sendssage = async () => {
     if (newMessage) {
       socket.emit("stop typing", selectedChat._id);
       try {
