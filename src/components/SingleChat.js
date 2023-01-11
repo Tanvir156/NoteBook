@@ -104,7 +104,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
 
-const sendMessage = async (event) => {
+const sendssage = async (event) => {
     if (newMessage) {
       socket.emit("stop typing", selectedChat._id);
       try {
@@ -288,7 +288,7 @@ const sendMessage = async (event) => {
                 value={newMessage}
                 onChange={typingHandler}
               />
-            <button onclick="sendMessage()">Send</button>
+            <button onClick="{sendssage}">Send</button>
             </FormControl>
           </Box>
         </>
