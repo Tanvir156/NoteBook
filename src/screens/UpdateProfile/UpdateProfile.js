@@ -3,6 +3,7 @@ import "./UpdateProfile.css";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading";
 import { updateUserProfile } from "../../action/userAction";
 const UpdateProfile = ({ history }) => {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ const UpdateProfile = ({ history }) => {
   const [institude, setInstitude] = useState("");
   const [session, setSession] = useState("");
   const [roll, setRoll] = useState("");
+  const [loading, setLoading] = useState(false);
   const [picMessage, setPicMessage] = useState(null);
   const [pic, setPic] = useState("");
   const [mobile, setMobile] = useState("");
@@ -19,7 +21,7 @@ const UpdateProfile = ({ history }) => {
   const dispatch = useDispatch();
 
   const updateProfile = useSelector((state) => state.updateProfile);
-  const { loading, error, success } = updateProfile;
+  const { error, success } = updateProfile;
   const his = useNavigate();
   useEffect(() => {
     if (!userInfo) {
@@ -52,6 +54,7 @@ const UpdateProfile = ({ history }) => {
     his("/profile");
   };
   const postDetails = (pics) => {
+    setLoading(true);
     if (
       pics ===
       "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
@@ -73,6 +76,7 @@ const UpdateProfile = ({ history }) => {
         .then((res) => res.json())
         .then((data) => {
           setPic(data.url.toString());
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -194,6 +198,7 @@ const UpdateProfile = ({ history }) => {
                   </div>
                 </div>
                 <div className="mt-5 text-center">
+                  {loading && <Loading />}
                   <input
                     className="btn btn-primary profile-button"
                     type="submit"
