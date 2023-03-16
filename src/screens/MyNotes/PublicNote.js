@@ -1,13 +1,5 @@
 import React from "react";
 import { useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import "./PublicNote.css";
-import {
-  listPublicNotes,
-  navigateProfile,
-} from "./../../action/publicNoteAction";
-import { faComment } from "@fortawesome/free-solid-svg-icons";
 import {
   MDBCard,
   MDBCardBody,
@@ -15,13 +7,15 @@ import {
   MDBCardText,
   MDBCardImage,
 } from "mdb-react-ui-kit";
+import { useDispatch } from "react-redux";
+import "./PublicNote.css";
+import {
+  listPublicNotes,
+  navigateProfile,
+} from "./../../action/publicNoteAction";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { faShare } from "@fortawesome/free-solid-svg-icons";
 
 const PublicNote = () => {
   const dispatch = useDispatch();
@@ -44,14 +38,17 @@ const PublicNote = () => {
   return (
     <div style={{ position: "relative", top: "100px" }}>
       {notes?.reverse().map((note) => (
-        <Card
+        <MDBCard
+          className="mb-3"
+          key={note._id}
           style={{
-            width: "600px",
+            boxShadow:
+              "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
+            width: "500px",
             margin: "auto",
-            marginBottom: "16px",
           }}
         >
-          <Card.Header>
+          <MDBCardBody>
             <MDBCardTitle
               style={{ fontWeight: "bold", display: "flex" }}
               onClick={() => getId(note._id)}
@@ -85,56 +82,23 @@ const PublicNote = () => {
                 {note.name}
               </Link>
             </MDBCardTitle>
-            <Card.Title>{note.caption}</Card.Title>
-            <img
-              src={note.pic}
-              alt=""
-              style={{ width: "100%", height: "auto" }}
-            />
-          </Card.Header>
-          <Card.Body>
-            {/* <Card.Text>{subtitle}</Card.Text>
-            <Card.Text>
-              This is the content of the post. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nulla quam velit, vulputate eu
-              pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac
-              blandit elit tincidunt id.
-            </Card.Text> */}
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Button
-                variant="link"
-                style={{
-                  width: "100px",
-                  boxShadow:
-                    "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-                }}
-              >
-                <FontAwesomeIcon icon={faHeart} className="me-2" />
-              </Button>{" "}
-              <Button
-                variant="link"
-                style={{
-                  width: "100px",
-                  boxShadow:
-                    "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-                }}
-              >
-                <FontAwesomeIcon icon={faComment} className="me-2" />
-              </Button>
-              <Button
-                variant="link"
-                style={{
-                  width: "100px",
-                  boxShadow:
-                    "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-                }}
-              >
-                <FontAwesomeIcon icon={faShare} className="me-2" />
-              </Button>
-            </div>
-          </Card.Body>
-          {/* <Card.Footer></Card.Footer> */}
-        </Card>
+            <MDBCardText>{note.caption}</MDBCardText>
+          </MDBCardBody>
+
+          <MDBCardImage
+            style={{
+              width: "300px",
+              objectFit: "cover",
+              margin: "auto",
+            }}
+            src={note.pic}
+          />
+          <MDBCardText>
+            <small className="text-muted">
+              {note.createdAt.substring(0, 10)}
+            </small>
+          </MDBCardText>
+        </MDBCard>
       ))}
     </div>
   );
