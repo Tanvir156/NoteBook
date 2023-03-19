@@ -110,7 +110,7 @@ const PublicNote = () => {
                   flex="1"
                   variant="ghost"
                   leftIcon={<BsHeart />}
-                  style={{ width: "95px" }}
+                  style={{ width: "90px" }}
                 >
                   Like
                 </Button>
@@ -118,7 +118,7 @@ const PublicNote = () => {
                   flex="1"
                   variant="ghost"
                   leftIcon={<FaComment />}
-                  style={{ width: "95px" }}
+                  style={{ width: "90px" }}
                 >
                   Comment
                 </Button>
@@ -126,7 +126,7 @@ const PublicNote = () => {
                   flex="1"
                   variant="ghost"
                   leftIcon={<FaShare />}
-                  style={{ width: "95px" }}
+                  style={{ width: "85px" }}
                 >
                   Share
                 </Button>
