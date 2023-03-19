@@ -36,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-     "postinstall": "npm install react-icons"
+     "postinstall": "npm install react-icons @chakra-ui/icons"
   },
   "eslintConfig": {
     "extends": [
