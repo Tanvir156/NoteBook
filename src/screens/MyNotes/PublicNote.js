@@ -1,22 +1,32 @@
 import React from "react";
 import { useEffect } from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-} from "mdb-react-ui-kit";
 import { useDispatch } from "react-redux";
 import "./PublicNote.css";
 import {
   listPublicNotes,
   navigateProfile,
 } from "./../../action/publicNoteAction";
+import { Flex, Avatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  IconButton,
+  Heading,
+  Image,
+} from "@chakra-ui/react";
+import { BiLike, BiShare, BiChat, BsThreeDotsVertical } from "@chakra-ui/icons";
 
+import { Box } from "@chakra-ui/layout";
+import { Text } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
+
+import { BsHeart } from "react-icons/bs";
+import { FaComment, FaShare, FaEllipsisV } from "react-icons/fa";
 const PublicNote = () => {
   const dispatch = useDispatch();
   const publicNoteList = useSelector((state) => state.publicNoteList);
@@ -38,67 +48,73 @@ const PublicNote = () => {
   return (
     <div style={{ position: "relative", top: "100px" }}>
       {notes?.reverse().map((note) => (
-        <MDBCard
-          className="mb-3"
-          key={note._id}
-          style={{
-            boxShadow:
-              "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
-            width: "500px",
-            margin: "auto",
-          }}
-        >
-          <MDBCardBody>
-            <MDBCardTitle
-              style={{ fontWeight: "bold", display: "flex" }}
-              onClick={() => getId(note._id)}
-            >
-              <Link
-                to={
-                  note._id !== userInfo._id
-                    ? "/showprofile/" + note._id
-                    : "/profile"
-                }
-                style={{ textDecoration: "none" }}
-              >
-                <img className="Image" src={note.shortImage} alt="" />
-              </Link>
+        <Card maxW="md" style={{ margin: "auto", marginBottom: "20px" }}>
+          <CardHeader>
+            <Flex spacing="4">
+              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                <Link
+                  to={
+                    note._id !== userInfo._id
+                      ? "/showprofile/" + note._id
+                      : "/profile"
+                  }
+                  style={{ textDecoration: "none" }}
+                >
+                  <Avatar name="Segun Adebayo" src={note.shortImage} />
+                </Link>
 
-              <Link
-                to={
-                  note._id !== userInfo._id
-                    ? "/showprofile/" + note._id
-                    : "/profile"
-                }
-                style={{
-                  textDecoration: "none",
-                  top: "15px",
-                  position: "relative",
-                  color: "black",
-                  fontFamily: " Helvetica",
-                  marginLeft: "5px",
-                }}
-              >
-                {note.name}
-              </Link>
-            </MDBCardTitle>
-            <MDBCardText>{note.caption}</MDBCardText>
-          </MDBCardBody>
+                <Box>
+                  <Heading size="sm">
+                    <Link
+                      to={
+                        note._id !== userInfo._id
+                          ? "/showprofile/" + note._id
+                          : "/profile"
+                      }
+                      style={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      {note.name}
+                    </Link>
+                  </Heading>
 
-          <MDBCardImage
-            style={{
-              width: "300px",
-              objectFit: "cover",
-              margin: "auto",
+                  <Text> {note.createdAt.substring(0, 10)}</Text>
+                </Box>
+              </Flex>
+              <IconButton
+                variant="ghost"
+                colorScheme="gray"
+                aria-label="See menu"
+                icon={<FaEllipsisV />}
+              />
+            </Flex>
+          </CardHeader>
+          <CardBody>
+            <Text>{note.caption}</Text>
+          </CardBody>
+          <Image objectFit="cover" src={note.pic} alt="" />
+
+          <CardFooter
+            justify="space-between"
+            flexWrap="wrap"
+            sx={{
+              "& > button": {
+                minW: "136px",
+              },
             }}
-            src={note.pic}
-          />
-          <MDBCardText>
-            <small className="text-muted">
-              {note.createdAt.substring(0, 10)}
-            </small>
-          </MDBCardText>
-        </MDBCard>
+          >
+            <Button flex="1" variant="ghost" leftIcon={<BsHeart />}>
+              Like
+            </Button>
+            <Button flex="1" variant="ghost" leftIcon={<FaComment />}>
+              Comment
+            </Button>
+            <Button flex="1" variant="ghost" leftIcon={<FaShare />}>
+              Share
+            </Button>
+          </CardFooter>
+        </Card>
       ))}
     </div>
   );
