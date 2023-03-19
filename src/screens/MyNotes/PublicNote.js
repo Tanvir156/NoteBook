@@ -48,9 +48,7 @@ const PublicNote = () => {
 
   return (
     <div style={{ position: "relative", top: "100px" }}>
-      {notes ? (
-        <>
-          {notes?.reverse().map((note) => (
+     {notes?.reverse().map((note) => (
             <Card maxW="md" style={{ margin: "auto", marginBottom: "20px" }}>
               <CardHeader>
                 <Flex spacing="4">
@@ -134,10 +132,6 @@ const PublicNote = () => {
               </CardFooter>
             </Card>
           ))}
-        </>
-      ) : (
-        <Loading />
-      )}
     </div>
   );
 };
