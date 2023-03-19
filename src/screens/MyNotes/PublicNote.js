@@ -26,6 +26,7 @@ import { Button } from "@chakra-ui/button";
 import { BsHeart } from "react-icons/bs";
 import { FaComment, FaShare, FaEllipsisV } from "react-icons/fa";
 import Loading from "./../../components/Loading";
+import LandingPage from "./../LandingPage/LandingPage";
 const PublicNote = () => {
   const dispatch = useDispatch();
   const publicNoteList = useSelector((state) => state.publicNoteList);
@@ -133,8 +134,12 @@ const PublicNote = () => {
             </Card>
           ))}
         </>
+      ) : userInfo ? (
+        <>
+          <Loading />
+        </>
       ) : (
-        <Loading />
+        <LandingPage />
       )}
     </div>
   );
