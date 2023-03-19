@@ -27,6 +27,7 @@ import { Button } from "@chakra-ui/button";
 
 import { BsHeart } from "react-icons/bs";
 import { FaComment, FaShare, FaEllipsisV } from "react-icons/fa";
+import Loading from "./../../components/Loading";
 const PublicNote = () => {
   const dispatch = useDispatch();
   const publicNoteList = useSelector((state) => state.publicNoteList);
@@ -47,75 +48,96 @@ const PublicNote = () => {
 
   return (
     <div style={{ position: "relative", top: "100px" }}>
-      {notes?.reverse().map((note) => (
-        <Card maxW="md" style={{ margin: "auto", marginBottom: "20px" }}>
-          <CardHeader>
-            <Flex spacing="4">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Link
-                  to={
-                    note._id !== userInfo._id
-                      ? "/showprofile/" + note._id
-                      : "/profile"
-                  }
-                  style={{ textDecoration: "none" }}
-                >
-                  <Avatar name="Segun Adebayo" src={note.shortImage} />
-                </Link>
-
-                <Box>
-                  <Heading size="sm">
+      {notes ? (
+        <>
+          {notes?.reverse().map((note) => (
+            <Card maxW="md" style={{ margin: "auto", marginBottom: "20px" }}>
+              <CardHeader>
+                <Flex spacing="4">
+                  <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
                     <Link
                       to={
                         note._id !== userInfo._id
                           ? "/showprofile/" + note._id
                           : "/profile"
                       }
-                      style={{
-                        textDecoration: "none",
-                      }}
+                      style={{ textDecoration: "none" }}
                     >
-                      {note.name}
+                      <Avatar name="Segun Adebayo" src={note.shortImage} />
                     </Link>
-                  </Heading>
 
-                  <Text> {note.createdAt.substring(0, 10)}</Text>
-                </Box>
-              </Flex>
-              <IconButton
-                variant="ghost"
-                colorScheme="gray"
-                aria-label="See menu"
-                icon={<FaEllipsisV />}
-              />
-            </Flex>
-          </CardHeader>
-          <CardBody>
-            <Text>{note.caption}</Text>
-          </CardBody>
-          <Image objectFit="cover" src={note.pic} alt="" />
+                    <Box>
+                      <Heading size="sm">
+                        <Link
+                          to={
+                            note._id !== userInfo._id
+                              ? "/showprofile/" + note._id
+                              : "/profile"
+                          }
+                          style={{
+                            textDecoration: "none",
+                          }}
+                        >
+                          {note.name}
+                        </Link>
+                      </Heading>
 
-          <CardFooter
-            justify="space-between"
-            flexWrap="wrap"
-            sx={{
-              "& > button": {
-                minW: "136px",
-              },
-            }}
-          >
-            <Button flex="1" variant="ghost" leftIcon={<BsHeart />}>
-              Like
-            </Button>
-            <Button flex="1" variant="ghost" leftIcon={<FaComment />}>
-              Comment
-            </Button>
-            <Button flex="1" variant="ghost" leftIcon={<FaShare />}>
-              Share
-            </Button>
-          </CardFooter>
-        </Card>
-      ))}
+                      <Text> {note.createdAt.substring(0, 10)}</Text>
+                    </Box>
+                  </Flex>
+                  <IconButton
+                    variant="ghost"
+                    colorScheme="gray"
+                    aria-label="See menu"
+                    icon={<FaEllipsisV />}
+                  />
+                </Flex>
+              </CardHeader>
+              <CardBody>
+                <Text>{note.caption}</Text>
+              </CardBody>
+              <Image objectFit="cover" src={note.pic} alt="" />
+
+              <CardFooter
+                justify="space-between"
+                flexWrap="wrap"
+                sx={{
+                  "& > button": {
+                    minW: "136px",
+                  },
+                }}
+              >
+                <Button
+                  flex="1"
+                  variant="ghost"
+                  leftIcon={<BsHeart />}
+                  style={{ width: "95px" }}
+                >
+                  Like
+                </Button>
+                <Button
+                  flex="1"
+                  variant="ghost"
+                  leftIcon={<FaComment />}
+                  style={{ width: "95px" }}
+                >
+                  Comment
+                </Button>
+                <Button
+                  flex="1"
+                  variant="ghost"
+                  leftIcon={<FaShare />}
+                  style={{ width: "95px" }}
+                >
+                  Share
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };
