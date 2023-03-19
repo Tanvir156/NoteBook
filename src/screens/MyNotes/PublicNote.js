@@ -111,7 +111,7 @@ const PublicNote = () => {
                   flex="1"
                   variant="ghost"
                   leftIcon={<BsHeart />}
-                  style={{ width: "94px" }}
+                  style={{ width: "95px" }}
                 >
                   Like
                 </Button>
